@@ -1,27 +1,27 @@
 package Math.Vector;
 
 public class Vector4 {
-    private double x, y, z, w;
+    private  float x, y, z, w;
 
-    public Vector4(double x, double y, double z, double w) {
+    public Vector4( float x,  float y,  float z,  float w) {
         this.x = x;
         this.y = y;
         this.z = z;
         this.w = w;
     }
-    public double getX() {
+    public  float getX() {
         return x;
     }
 
-    public double getY() {
+    public  float getY() {
         return y;
     }
 
-    public double getZ() {
+    public  float getZ() {
         return z;
     }
 
-    public double getW() {
+    public  float getW() {
         return w;
     }
 
@@ -33,30 +33,30 @@ public class Vector4 {
         return new Vector4(this.x - other.x, this.y - other.y, this.z - other.z, this.w - other.w);
     }
 
-    public Vector4 multiply(double scalar) {
+    public Vector4 multiply( float scalar) {
         return new Vector4(this.x * scalar, this.y * scalar, this.z * scalar, this.w * scalar);
     }
 
-    public Vector4 divide(double scalar) {
+    public Vector4 divide( float scalar) {
         if (scalar == 0) {
             throw new IllegalArgumentException("Мы не делим на 0");
         }
         return new Vector4(this.x / scalar, this.y / scalar, this.z / scalar, this.w / scalar);
     }
 
-    public double length() {
-        return Math.sqrt(x * x + y * y + z * z + w * w);
+    public  float length() {
+        return (float) Math.sqrt(x * x + y * y + z * z + w * w);
     }
 
     public Vector4 normalize() {
-        double length = length();
+         float length = length();
         if (length == 0) {
             throw new ArithmeticException("Ты точно хочешь нормализовать 0-вектор?");
         }
         return this.divide(length);
     }
 
-    public double dotProduct(Vector4 other) {
+    public  float dotProduct(Vector4 other) {
         return this.x * other.x + this.y * other.y + this.z * other.z + this.w * other.w;
     }
 }

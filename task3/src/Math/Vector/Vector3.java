@@ -1,23 +1,23 @@
 package Math.Vector;
 
 public class Vector3 {
-    private double x, y, z;
+    private  float x, y, z;
 
-    public Vector3(double x, double y, double z) {
+    public Vector3( float x,  float y,  float z) {
         this.x = x;
         this.y = y;
         this.z = z;
     }
 
-    public double getX() {
+    public  float getX() {
         return x;
     }
 
-    public double getY() {
+    public  float getY() {
         return y;
     }
 
-    public double getZ() {
+    public  float getZ() {
         return z;
     }
 
@@ -29,37 +29,37 @@ public class Vector3 {
         return new Vector3(this.x - other.x, this.y - other.y, this.z - other.z);
     }
 
-    public Vector3 multiply(double scalar) {
+    public Vector3 multiply( float scalar) {
         return new Vector3(this.x * scalar, this.y * scalar, this.z * scalar);
     }
 
-    public Vector3 divide(double scalar) {
+    public Vector3 divide( float scalar) {
         if (scalar == 0) {
             throw new IllegalArgumentException("Мы не делим на 0");
         }
         return new Vector3(this.x / scalar, this.y / scalar, this.z / scalar);
     }
 
-    public double length() {
-        return Math.sqrt(x * x + y * y + z * z);
+    public  float length() {
+        return (float) Math.sqrt(x * x + y * y + z * z);
     }
 
     public Vector3 normalize() {
-        double length = length();
+         float length = length();
         if (length == 0) {
             throw new ArithmeticException("Ты точно хочешь нормализовать 0-вектор?");
         }
         return this.divide(length);
     }
 
-    public double dotProduct(Vector3 other) {
+    public  float dotProduct(Vector3 other) {
         return this.x * other.x + this.y * other.y + this.z * other.z;
     }
 
     public Vector3 crossProduct(Vector3 other) {
-        double resultX = this.y * other.z - this.z * other.y;
-        double resultY = this.z * other.x - this.x * other.z;
-        double resultZ = this.x * other.y - this.y * other.x;
+         float resultX = this.y * other.z - this.z * other.y;
+         float resultY = this.z * other.x - this.x * other.z;
+         float resultZ = this.x * other.y - this.y * other.x;
         return new Vector3(resultX, resultY, resultZ);
     }
 }
